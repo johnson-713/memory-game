@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 import "./Card.css";
 
-export const Card = ({ card, handleChoice }) => {
+export const Card = ({ card, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
-    handleChoice(card);
+    if (!disabled) {
+      handleChoice(card);
+    }
   };
   return (
     <div className="card">
-      <div>
+      <div className={flipped ? "flipped" : ""}>
         <img
           width={150}
-          height={180}
+          height={200}
           src={card?.img}
           alt="card-front"
           className="front"
